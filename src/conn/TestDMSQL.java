@@ -35,25 +35,16 @@ public class TestDMSQL {
 	public static void deleteSql() {
 		Connection con = DMConnect.getConnection(DMConnect.JDBC_DRIVER, DMConnect.DB_URL, DMConnect.USER,
 				DMConnect.PASS);
-		String sql = "select * from pay.employee";
+		String sql = "delete from pay.employee";
 		Statement stmt = DMConnect.getStatement(con);
-		ResultSet rs = DMConnect.getResultSet(stmt, sql);
 		try {
-			String str = "";
-			int i = 1;
-			while (rs.next()) {
-				str += i + ": ";
-				str += rs.getString("id") + " ";
-				str += rs.getString("name") + " ";
-				str += rs.getDate("date") + "\n";
-				i++;
-			}
-			System.out.println(str);
+			boolean t=stmt.execute(sql);
+			System.out.println(t);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		DMConnect.close(con, stmt, rs);
+		DMConnect.close(con, stmt, null);
 	}
 
 	public static void main(String[] args){
