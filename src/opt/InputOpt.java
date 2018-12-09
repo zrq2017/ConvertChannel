@@ -3,7 +3,11 @@ package opt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * 隐通道输入操作
+ * @author zrq
+ *
+ */
 
 public class InputOpt {
 	

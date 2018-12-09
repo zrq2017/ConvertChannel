@@ -3,7 +3,11 @@ package user;
 import java.sql.Connection;
 
 import conn.DMConnect;
-
+/**
+ * 数据库用户基类
+ * @author zrq
+ *
+ */
 public class User {
 	private Integer id;
 	private String sex;

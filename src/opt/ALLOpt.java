@@ -2,11 +2,24 @@ package opt;
 
 import user.Higher;
 import user.Lower;
-
+/**
+ * 隐通道操作主函数
+ * @author zrq
+ *
+ */
 public class ALLOpt {
-	public void excute() {
-		Lower low=new Lower();
-		Higher high=new Higher();
+	
+	/**
+	 * 隐通道过程执行函数
+	 * 
+	 * 相关参数：
+	 * 1. 数据库高安全级用户high，低安全级用户low
+	 * 2.数据库表员工表(employee)、薪资表(payroll)
+	 * 3.隐通道实现记录雇员id:666666、999999
+	 * 4.id(A):666666用于表示数据状态，id(B):999999用于数据传输
+	 * 
+	 * 执行过程：
+	 * 
 		//1.L写所有记录
 		InputOpt.inputAll(low.getCon());
 		//2.L删除User.A的记录
@@ -26,5 +39,16 @@ public class ALLOpt {
 		while(SelectOpt.SelectSaralyA(high.getCon())) {
 			System.out.println("L读数据完毕，新一轮已开始！");
 		};
+	 *
+	 */
+	public static void excute() {
+		Thread low=new Thread(new Lower());
+		Thread high=new Thread(new Higher());
+		low.start();
+		high.start();
+	}
+	
+	public static void main(String[] args) {
+		excute();
 	}
 }

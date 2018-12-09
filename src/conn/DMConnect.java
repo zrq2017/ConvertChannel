@@ -1,7 +1,15 @@
 package conn;
 
-import java.sql.*;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+/**
+ * 达梦数据库连接工具
+ * @author zrq
+ *
+ */
 public class DMConnect {
 	// JDBC 驱动名及数据库 URL
 	public static final String JDBC_DRIVER = "dm.jdbc.driver.DmDriver";

@@ -5,7 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import conn.DMConnect;
-
+/**
+ * 隐通道删除操作
+ * @author zrq
+ *
+ */
 public class DeleteOpt {
 
 	/**
