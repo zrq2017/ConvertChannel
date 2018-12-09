@@ -63,6 +63,12 @@ public class DMConnect {
 		return stmt;
 	}
 	
+	/**
+	 * 获得查询结果集
+	 * @param stmt
+	 * @param sql
+	 * @return
+	 */
 	public static ResultSet getResultSet(Statement stmt,String sql) {
 		ResultSet rs=null;
 		try {
@@ -74,22 +80,22 @@ public class DMConnect {
 		return rs;
 	}
 	
-	public static void close(Object obj) {
-		try {
-			if(obj instanceof ResultSet) {
-				DMConnect.close(null,null,(ResultSet)obj);
-			}else if(obj instanceof Statement) {
-				DMConnect.close(null,(Statement)obj,null);
-			}else if(obj instanceof Connection) {
-				DMConnect.close((Connection)obj,null,null);
-			}else {
-				System.out.println("语句输入错误！");
-			}
-		}catch(Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public static void close(Object obj) {
+//		try {
+//			if(obj instanceof ResultSet) {
+//				DMConnect.close(null,null,(ResultSet)obj);
+//			}else if(obj instanceof Statement) {
+//				DMConnect.close(null,(Statement)obj,null);
+//			}else if(obj instanceof Connection) {
+//				DMConnect.close((Connection)obj,null,null);
+//			}else {
+//				System.out.println("语句输入错误！");
+//			}
+//		}catch(Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	/**
 	 * 关闭数据库操作对象
@@ -112,7 +118,6 @@ public class DMConnect {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Connection con=DMConnect.getConnection(JDBC_DRIVER, DB_URL, USER, PASS);
 		String sql="select * from dmhr.city";
 		Statement stmt=DMConnect.getStatement(con);

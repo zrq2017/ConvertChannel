@@ -25,7 +25,7 @@ public class User {
 	 * 获得用户的数据库连接
 	 * @return
 	 */
-	public Connection getCon(String username,String password) {
+	public Connection getCon0(String username,String password) {
 		return DMConnect.getConnection(DMConnect.JDBC_DRIVER, DMConnect.DB_URL, username, password);
 	}
 	

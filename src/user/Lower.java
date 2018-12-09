@@ -22,7 +22,7 @@ public class Lower extends User implements Runnable{
 	}
 
 	public void setCon() {
-		this.con = this.getCon("low", "123456789");
+		this.con = this.getCon0("low", "123456789");
 	}
 
 	/**
