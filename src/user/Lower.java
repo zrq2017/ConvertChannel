@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import opt.DeleteOpt;
 import opt.InputOpt;
+import util.ConvertStringBinary;
 /**
  * 数据库低安全级用户
  * @author zrq
@@ -70,7 +71,9 @@ public class Lower extends User implements Runnable{
 					e.printStackTrace();
 				}//阻塞L执行，防止太快的判断读取完毕
 				if(tranOk==20){
-					System.out.println("编码"+str+"\n*****************读取完毕！*****************");
+					System.out.println(str.length()+":"+str);
+					System.out.println(ConvertStringBinary.binaryToString(str));
+					System.out.println("编码："+str+"\n*****************读取完毕！*****************");
 					return ;
 				}
 			}
