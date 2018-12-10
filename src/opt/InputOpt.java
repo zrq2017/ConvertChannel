@@ -19,12 +19,12 @@ public class InputOpt {
 	public static int inputAll(Connection con) {
 		int[] id= {666666,999999};
 		String[] writeSql= {
-				"insert 'PAY'.'employee'(id,name) values(?,'user')",
-				"insert 'PAY'.'payroll'(id,year,month,salary) values(?,2018,12,8000)"
+				"insert LOW.EMPLOYEE(\"id\",\"name\") values(?,'user')",
+				"insert LOW.PAYROLL(\"id\",\"year\",\"month\",\"salary\") values(?,2018,12,8000)"
 				};
 		String[] selectSql={
-				"select count(*) from 'PAY'.'employee' where id=?",
-				"select count(*) from 'PAY'.'payroll' where id=?"
+				"select count(*) from LOW.EMPLOYEE where \"id\"=?",
+				"select count(*) from LOW.PAYROLL where \"id\"=?"
 				};
 		PreparedStatement stmt=null;
 		try {

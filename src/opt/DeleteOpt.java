@@ -20,7 +20,7 @@ public class DeleteOpt {
 	 */
 	public static int deleteEmployee(Connection con,int id) {
 		int tag=0;
-		String sql="delete from 'PAY'.'employee' where id=?";
+		String sql="delete from LOW.EMPLOYEE where \"id\"=?";
 		PreparedStatement stmt=null;
 		try {
 			stmt=con.prepareStatement(sql);
@@ -43,7 +43,7 @@ public class DeleteOpt {
 	 */
 	public static int deleteSaraly(Connection con,int id) {
 		int tag=0;
-		String sql="delete from 'PAY'.'payroll' where id=?";
+		String sql="delete from LOW.PAYROLL where \"id\"=?";
 		PreparedStatement stmt=null;
 		try {
 			stmt=con.prepareStatement(sql);

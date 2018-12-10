@@ -17,7 +17,7 @@ public class SelectOpt {
 	 */
 	public static boolean SelectSaralyA(Connection con) {
 		boolean tag=false;
-		String sql="select count(*) from 'PAY'.'employee' where id=666666";
+		String sql="select count(*) from LOW.EMPLOYEE where \"id\"=666666";
 		try {
 			tag=con.createStatement().executeQuery(sql).next();
 		} catch (SQLException e) {
