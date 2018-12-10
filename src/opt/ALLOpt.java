@@ -17,6 +17,7 @@ public class ALLOpt {
 	 * 2.数据库表员工表(employee)、薪资表(payroll)
 	 * 3.隐通道实现记录雇员id:666666、999999
 	 * 4.id(A):666666用于表示数据状态，id(B):999999用于数据传输
+	 * 5.改进：上述采用4条实现引用完整性删除隐通道，改为使用3条记录：表示状态的不变，传数据的变更为只用employee.A
 	 * 
 	 * 执行过程：
 	 * 
@@ -24,14 +25,14 @@ public class ALLOpt {
 		InputOpt.inputAll(low.getCon());
 		//2.L删除User.A的记录
 		DeleteOpt.deleteEmployee(low.getCon(), 666666);
-		//3.H操作Salary.B进行数据准备
-		DeleteOpt.deleteSaraly(high.getCon(), 0);
+		//3.H操作employee.B进行数据准备
+		DeleteOpt.deleteEmployee(high.getCon(), 999999);
 		//4.H删除Saraly.A表示传送完数据
 		DeleteOpt.deleteSaraly(high.getCon(), 666666);
 		//5.L一直在删除A，此时删除成功
 		DeleteOpt.deleteEmployee(low.getCon(), 666666);
-		//6.L删除User.B读取数据
-		DeleteOpt.deleteEmployee(low.getCon(), 999999);
+		//6.L插入User.B读取数据
+		DeleteOpt.inputEmployee(low.getCon(), 999999);
 		//7.L补全所有记录
 		InputOpt.inputAll(low.getCon());
 		//8.H删除后一直读Saraly.A的记录，判断是否读数据成功

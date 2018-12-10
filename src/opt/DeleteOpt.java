@@ -24,11 +24,11 @@ public class DeleteOpt {
 		PreparedStatement stmt=null;
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setInt(0, id);
-			tag=stmt.executeUpdate();
+			stmt.setInt(1, id);
+			tag=stmt.executeUpdate()>0?1:1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("删除用户失败（外键（引用）存在！违反引用完整性！）");
 		}finally {
 			DMConnect.close(null,stmt,null);
 		}
@@ -47,8 +47,8 @@ public class DeleteOpt {
 		PreparedStatement stmt=null;
 		try {
 			stmt=con.prepareStatement(sql);
-			stmt.setInt(0, id);
-			tag=stmt.executeUpdate();
+			stmt.setInt(1, id);
+			tag=stmt.executeUpdate()>0?1:1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

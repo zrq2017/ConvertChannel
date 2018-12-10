@@ -30,7 +30,7 @@ public class Lower extends User implements Runnable{
 	 * @return
 	 */
 	public int dataOpt() {
-		int code=DeleteOpt.deleteEmployee(getCon(), 999999);//L进行数据读取
+		int code=InputOpt.inputEmployee(getCon(), 999999);//L进行数据读取
 		InputOpt.inputAll(getCon());//L补全所有记录
 		return code;
 	}
@@ -51,15 +51,22 @@ public class Lower extends User implements Runnable{
 		int tranOk=0;
 		while(true) {//L第一次读取成功后,开始循环监视判断数据是否读取完毕
 			if(DeleteOpt.deleteEmployee(getCon(), 666666)>=1) {
-				this.dataOpt();//数据读取与记录补全
+				str+=this.dataOpt();//数据读取与记录补全
 				tranOk=0;//L将读取数据是否结束计数置为0
 			}else {
 				tranOk++;
+				try {
+					Thread.sleep(1);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}//阻塞L执行，防止太快的判断读取完毕
 				if(tranOk==20){
 					System.out.println(str);
 					return ;
 				}
 			}
+			System.out.println("L执行中...");
 		}
 	}
 	

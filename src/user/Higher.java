@@ -30,8 +30,8 @@ public class Higher extends User implements Runnable{
 	 * @return
 	 */
 	public void dataOpt(int code) {
-		if(code==1) {//H用0表示不删除，1表示删除；L在进行employee.B的删除时，删除不成功即数据存在读0，删除成功即数据存在读1
-			DeleteOpt.deleteSaraly(getCon(), 0);//H操作Salary.B进行数据准备
+		if(code==1) {//H用0表示不删除，1表示删除；L在进行employee.B的插入时，插入不成功即数据存在读0，插入成功即数据不存在读1
+			DeleteOpt.deleteEmployee(getCon(), 999999);//H操作Salary.B进行数据准备
 		}
 		DeleteOpt.deleteSaraly(getCon(), 666666);//H删除Saraly.A表示传送完数据
 	}
@@ -40,15 +40,23 @@ public class Higher extends User implements Runnable{
 	public void run() {
 		int code=0;//H第一次传送数据，无需在循环外写
 		int len=7;
+		int[] cipher= {1,0,1,0,1,0,1};
 		while(true) {
 			if(SelectOpt.SelectSaralyA(getCon())) {//H根据Salary.A记录是否存在判断L是否读取完毕数据
-				this.dataOpt(code);//H成功获取L读取完毕，重新进行数据的传输操作
+//				try {
+//					Thread.sleep(1);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}//阻塞H执行
+				this.dataOpt(cipher[len-1]);//H成功获取L读取完毕，重新进行数据的传输操作
 				len--;
 			}
 			//在这用是否读取完毕判断是否终止循环
 			if(len==0) {
 				return;
 			}
+			System.out.println("H执行中...");
 		}
 	}
 }
