@@ -22,13 +22,14 @@ public class DeleteOpt {
 		int tag=0;
 		String sql="delete from LOW.EMPLOYEE where \"id\"=?";
 		PreparedStatement stmt=null;
+//		System.out.println("deleteEmployee"+id);
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setInt(1, id);
-			tag=stmt.executeUpdate()>0?1:1;
+			tag=stmt.executeUpdate()>0?1:0;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("删除用户失败（外键（引用）存在！违反引用完整性！）");
+//			System.out.println("删除用户失败（外键（引用）存在！违反引用完整性！）");
 		}finally {
 			DMConnect.close(null,stmt,null);
 		}
@@ -48,7 +49,7 @@ public class DeleteOpt {
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setInt(1, id);
-			tag=stmt.executeUpdate()>0?1:1;
+			tag=stmt.executeUpdate()>0?1:0;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

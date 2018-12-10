@@ -43,6 +43,13 @@ public class Lower extends User implements Runnable{
 		//2.L删除User.A的记录,循环监视该记录，当第一次成功删除成功后开始数据的读取
 		String str="";
 		while(true) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}//阻塞L执行，防止太快的执行
+			System.out.println("等待高级用户传送数据...");
 			if(DeleteOpt.deleteEmployee(getCon(), 666666)>=1){
 				str+=this.dataOpt();//第一次的读取操作
 				break;
@@ -53,22 +60,27 @@ public class Lower extends User implements Runnable{
 			if(DeleteOpt.deleteEmployee(getCon(), 666666)>=1) {
 				str+=this.dataOpt();//数据读取与记录补全
 				tranOk=0;//L将读取数据是否结束计数置为0
+				System.out.println("编码："+str);
 			}else {
 				tranOk++;
 				try {
-					Thread.sleep(1);
+					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}//阻塞L执行，防止太快的判断读取完毕
 				if(tranOk==20){
-					System.out.println(str);
+					System.out.println("编码"+str+"\n*****************读取完毕！*****************");
 					return ;
 				}
 			}
-			System.out.println("L执行中...");
+			System.out.println(tranOk+":L执行中...");
 		}
 	}
 	
-	
+
+	public static void main(String[] args) {
+		Thread low=new Thread(new Lower());
+		low.start();
+	}
 }

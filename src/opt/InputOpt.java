@@ -73,14 +73,15 @@ public class InputOpt {
 		String sql="insert LOW.EMPLOYEE(\"id\",\"name\",\"date\",\"sex\",\"nativeplace\",\"eduback\") values(?,'zrq','2018-12-9','男','福建','硕士')";
 		PreparedStatement stmt=null;
 		try {
+			stmt=con.prepareStatement(sql);
 			stmt.setInt(1, id);
 			stmt.execute();
 			code=1;
 		} catch (SQLException e) {
 			//插入失败，编码为0
 			code=0;
-		}finally {
 			return code;
 		}
+		return code;
 	}
 }
