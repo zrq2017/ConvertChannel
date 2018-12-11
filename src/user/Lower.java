@@ -44,15 +44,16 @@ public class Lower extends User implements Runnable{
 		//2.L删除User.A的记录,循环监视该记录，当第一次成功删除成功后开始数据的读取
 		String str="";
 		while(true) {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}//阻塞L执行，防止太快的执行
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}//阻塞L执行，防止太快的执行
 			System.out.println("等待高级用户传送数据...");
 			if(DeleteOpt.deleteEmployee(getCon(), 666666)>=1){
 				str+=this.dataOpt();//第一次的读取操作
+				System.out.println("编码："+str);
 				break;
 			}
 		}

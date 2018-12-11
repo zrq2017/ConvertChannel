@@ -21,6 +21,7 @@ public class DeleteOpt {
 	public static int deleteEmployee(Connection con,int id) {
 		int tag=0;
 		String sql="delete from LOW.EMPLOYEE where \"id\"=?";
+		//sql = "delete from LOW.PAYROLL where \"id\"=?";
 		PreparedStatement stmt=null;
 //		System.out.println("deleteEmployee"+id);
 		try {

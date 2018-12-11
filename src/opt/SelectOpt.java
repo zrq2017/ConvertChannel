@@ -18,6 +18,19 @@ public class SelectOpt {
 	public static boolean SelectSaralyA(Connection con) {
 		boolean tag=false;
 		String sql="select count(*) from LOW.EMPLOYEE where \"id\"=666666";
+		sql = "select count(*) from LOW.PAYROLL where \"id\"=666666";
+		try {
+			tag=con.createStatement().executeQuery(sql).next();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tag;
+	}
+	public static boolean SelectEmployee(Connection con) {
+		boolean tag=false;
+		String sql="select count(*) from LOW.EMPLOYEE where \"id\"=999999";
+		//sql = "select count(*) from LOW.PAYROLL where \"id\"=666666";
 		try {
 			tag=con.createStatement().executeQuery(sql).next();
 		} catch (SQLException e) {

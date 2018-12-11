@@ -32,12 +32,12 @@ public class InputOpt {
 		try {
 			for(int i=0;i<2;i++) {
 				for(int j=0;j<2;j++) {
-					stmt=con.prepareStatement(selectSql[i]);
-					stmt.setInt(1, id[j]);
+					stmt=con.prepareStatement(selectSql[j]);
+					stmt.setInt(1, id[i]);
 //					System.out.println(stmt.toString());
 					if(!stmt.executeQuery().next()) {//若是查询记录为空执行插入
-						PreparedStatement wstmt=con.prepareStatement(writeSql[i]);
-						wstmt.setInt(1, id[j]);
+						PreparedStatement wstmt=con.prepareStatement(writeSql[j]);
+						wstmt.setInt(1, id[i]);
 						if(i==1&&j==1) {
 							wstmt.close();
 							continue;//判断为saraly.B的记录不写入
