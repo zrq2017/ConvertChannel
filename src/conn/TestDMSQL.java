@@ -5,6 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+import opt.SelectOpt;
+import opt.UpdateOpt;
+import user.MACHigher;
+import user.MACLower;
 
 public class TestDMSQL {
 
@@ -66,7 +70,7 @@ public class TestDMSQL {
 
 	public static void main(String[] args){
 		System.out.println("************DM数据库语句测试**********\n");
-		System.out.println("1.select\t2.delete\t3.insert");
+		System.out.println("1.select\t2.delete\t3.insert\t4.测试");
 		int i = new Scanner(System.in).nextInt();
 		switch (i) {//达梦数据库严格遵循列名双引号，值字符串单引号
 		case 1:
@@ -77,6 +81,12 @@ public class TestDMSQL {
 			break;
 		case 3:
 			System.out.println(insertSql());
+			break;
+		case 4:
+			System.out.println(UpdateOpt.UpdateEmployeeAandTag(new MACLower().getCon()));
+			break;
+		case 5:
+			System.out.println(SelectOpt.SelectEmployeeA(new MACHigher().getCon()).getTag());
 			break;
 		}
 	}

@@ -2,6 +2,14 @@
 /*创建low两个用户，并创建数据库pay*/
 create user low identified by 123456789;
 
+CREATE TABLE "SYSDBA"."USER"
+(
+"id" INTEGER NOT NULL,
+"username" VARCHAR(50),
+"password" VARCHAR(50),
+CLUSTER PRIMARY KEY("id")) STORAGE(ON "MAIN", CLUSTERBTR) ;
+
+insert into  "SYSDBA"."USER" values(1,'root','123456')
 
 /*授予LOW该有的系统权限*/
 grant CREATE TABLE to "LOW";

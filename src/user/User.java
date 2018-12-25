@@ -15,6 +15,8 @@ public class User {
 	private Integer age;
 	private String username;
 	private String password;
+	private Integer term;
+	private Integer tag;
 	public User() {}
 	public User(String username,String password) {
 		this.username=username;
@@ -64,6 +66,18 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Integer getTerm() {
+		return term;
+	}
+	public void setTerm(Integer term) {
+		this.term = term;
+	}
+	public Integer getTag() {
+		return tag;
+	}
+	public void setTag(Integer tag) {
+		this.tag = tag;
 	}
 	
 }
