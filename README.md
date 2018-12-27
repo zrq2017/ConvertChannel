@@ -1,4 +1,4 @@
-# ConvertChannel
+# ConvertChannel（隐通道）
 数据库强制访问控制下隐通道的实现过程
 
 ###一、环境准备
